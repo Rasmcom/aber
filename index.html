@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف الإنجاز الرقمي للروضة</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn-icons-mp4.flaticon.com/512/15713/15713008.mp4" type="image/mp4">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --green: #006C35;
+            --navy: #0B2D26;
+            --gold: #C9A227;
+            --background: #F7F9F8;
+            --card-bg: #FFFFFF;
+            --text-color: #0B2D26;
+            --border-color: #eef0ef;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- الهيدر العلوي --- */
+        .site-header {
+            background-color: var(--card-bg);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-brand .logo { height: 50px; }
+        .header-brand .title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .search-wrapper { position: relative; }
+        .search-wrapper .icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; }
+        .search-wrapper input {
+            width: 320px;
+            height: 45px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 0 20px 0 45px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .search-wrapper input:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(0, 108, 53, 0.1);
+        }
+
+        /* --- عناوين الأقسام --- */
+        .file-section {
+            margin-top: 50px;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .section-header .header-icon {
+            width: 50px;
+            height: 50px;
+        }
+        .section-header h2 {
+            font-family: 'Cairo', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            border-bottom: 3px solid var(--green);
+            padding-bottom: 5px;
+        }
+
+        .subsection-header {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 40px 0 20px 0;
+            padding-right: 15px;
+            border-right: 4px solid var(--gold);
+        }
+
+        /* --- تصميم البطاقات (نمط القائمة) --- */
+        .cards-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            border-right: 5px solid var(--green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-right-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            border-right-color: var(--gold);
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.6;
+            padding-left: 20px;
+        }
+
+        .card-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .card-icon-wrapper video {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- تصميم متجاوب --- */
+        @media (max-width: 992px) {
+            .header-brand .title { display: none; }
+        }
+        @media (max-width: 768px) {
+            .site-header { flex-direction: column; gap: 15px; padding: 15px; }
+            .search-wrapper, .search-wrapper input { width: 100%; }
+            .section-header h2 { font-size: 1.8rem; }
+            .subsection-header { font-size: 1.4rem; }
+            .card { flex-direction: column-reverse; gap: 15px; text-align: center; }
+            .card-content p { padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-brand">
+            <img src="https://salogos.org/wp-content/uploads/2021/11/UntiTtled-1-1300x988.png" alt="شعار الروضة" class="logo">
+            <h1 class="title">ملف الإنجاز الرقمي</h1>
+        </div>
+        <div class="search-wrapper">
+             <i class="fas fa-search icon"></i>
+            <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="ابحث عن ملف أو مؤشر...">
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- أولاً: ملفات عامة -->
+        <section class="file-section">
+            <div class="section-header">
+                <video src="https://cdn-icons-mp4.flaticon.com/512/15713/15713008.mp4" autoplay loop muted class="header-icon"></video>
+                <h2>ملفات عامة</h2>
+            </div>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1w5QG7GVpyb1qa0RGkyYMLJSSoW3D0nRQ" target="_blank" class="card">
+                    <div class="card-content"><p>بيانات عامة عن الروضة</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/14VCiZrcd-SldBrp3Sasm41eej6ZQ6VMR" target="_blank" class="card">
+                    <div class="card-content"><p>الرؤية والرسالة والقيم</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1vmkGidl4YEXqC5gYH2SkE5AqcJQnnvuS" target="_blank" class="card">
+                    <div class="card-content"><p>أبرز المنجزات والتحديات والمعوقات</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/12j7yvq3W2lq96xP6MVD_dEKCIv" target="_blank" class="card">
+                    <div class="card-content"><p>سجل التقويم الذاتي</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ثانياً: مجال الإدارة المدرسية -->
+        <section class="file-section">
+            <div class="section-header">
+                <h2>مجال الإدارة المدرسية</h2>
+            </div>
+            
+            <h3 class="subsection-header">التخطيط</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1GueTbDnrSb1xMsh4vzSOas-nsn9kDRQH" target="_blank" class="card">
+                    <div class="card-content"><p>المؤشر 1-1-1-1 — تضع المدرسة خطة تشغيلية مكتملة العناصر</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1kB-tJqTXPQpI3YznoHU2v0EmMRPNChp_" target="_blank" class="card">
+                    <div class="card-content"><p>المؤشر 1-1-1-2 — تتابع المدرسة تنفيذ خطتها وتطورها</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+            </div>
+
+            <h3 class="subsection-header">قيادة العملية التعليمية</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1qGSvuvcgD_sFa8AqgIIF1Mkwl_fVNRXD" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-2-1-1 — تعزز المدرسة القيم الإسلامية والهوية الوطنية</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1lb03zxB6IpueNeWvkJ52YpwhjQgbWuE1" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-2-1-2 — تلتزم المدرسة بقيم مهنة التعليم وأخلاقياتها</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/17IxyfQHpOaseIrJ04qGXotnEHT4Gxuxs" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-2-1-3 — توفر المدرسة مناخاً آمناً للتعلم والنمو نفسياً واجتماعياً</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1sZa0pszoNvK3VGHo8xwZTFAJFN_lYL2A" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-2-1-4 — تنشر المدرسة قواعد السلوك والمواظبة وتتابع تطبيقها</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1BfAYB_f03aQaFn30jyxbJqoddvJK-GFH" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-2-1-5 — توفر المدرسة برامج وأنشطة تربوية داعمة للسلوك الإيجابي</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1yGzO_67_5bzm1hCyQh1C-TbwXGpA-f61" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-2-1-6 — توفر المدرسة برامج وأنشطة إثرائية غير صفية</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+
+            <h3 class="subsection-header">المجتمع المدرسي</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1GaUl2eBvj3gZWOtHXarR1FpjOj6Nc9ot" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-3-1-1 — تعزز المدرسة بناء العلاقات الإيجابية والتعاون مع المجتمع المدرسي</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1qHdvLgzCItcqHyHpo_bjtW7YNDaK_2Go" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-3-1-3 — تعزز المدرسة الشراكة المجتمعية لدعم التعلم والتأثير الإيجابي في المجتمع</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+
+            <h3 class="subsection-header">التطوير المؤسسي</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1XC3yecUVr3cg3DPljSo2bZMsipPmT3M9" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-4-1-4 — تشجع المدرسة منسوبيها للحصول على الرخصة المهنية</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/18HGjObwyac_MGDANIe06yjx20mIersU7" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-4-1-5 — تدعم المدرسة التطوير المهني لمنسوبيها</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/11MogHoLk9qBDXVQ26RDES2J7QUmXoD_a" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-4-1-6 — تطبق المدرسة التقويم الذاتي المبني على معايير محددة</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1z0_86THFyW3YKrE_Npmhh-LXw4rOoNjI" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-4-1-7 — تنفذ المدرسة خطة للتحسين بناءً على نتائج التقويم المدرسي</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+
+            <h3 class="subsection-header">حماية الطفل وحقوقه</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1mNeYOVDezxoaOqotJwzlYQE5pW-6-t0U" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-5-1-1 — تلتزم المدرسة بحماية الأطفال من الأذى</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1pHIIbKzhjuzKttw1YYoZ8u08KWtmyt79" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-5-1-2 — تعزز المدرسة وعي الأطفال بخدمات حماية الطفل</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1zUc6UMd2R_IMm51L4OZWGMOavCDdBuXG" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-5-1-3 — تلتزم المدرسة بالمحافظة على صحة الأطفال ومتابعة تغذيتهم</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+        </section>
+
+        <!-- ثالثاً: بناء الخبرات التعلم -->
+        <section class="file-section">
+            <div class="section-header">
+                <h2>بناء الخبرات التعلم</h2>
+            </div>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1FtUDvk5l6KGO7FK5QIPGicv8p0BNrhdz" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-1-1-2 — توفر المدرسة فرصاً متكافئة للتعلم تلبي احتياجات الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1R42hnWutR86HqitWjgh3uCwRXopuVScF" target="_blank" class="card"><div class="card-content"><p>المؤشر 2-1-1-2 — تدعم المدرسة تنفيذ المناهج لتحقيق نواتج التعلم المستهدفة</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1vDRKaP0YrjkPB_apPEwyZ1mO4bmwokk-" target="_blank" class="card"><div class="card-content"><p>المؤشر 3-1-1-2 — تنوع المدرسة في استراتيجيات التدريس لتلبية احتياجات الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1cJ2RvTW5_IU0coKkVS0i9-L-OHvoemDg" target="_blank" class="card"><div class="card-content"><p>المؤشر 4-1-1-2 — تفعّل المدرسة التعلم الإلكتروني لتلبية احتياجات الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1EgFWnAP1wxzz9IjELLmC0hJ_Z7i0eOxB" target="_blank" class="card"><div class="card-content"><p>المؤشر 5-1-1-2 — توفر المدرسة أنشطة تعلم تطبيقية واستقصائية تعزز النمو</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1LMmx_q70GdutV-gtajbM6MmC0tcPax3k" target="_blank" class="card"><div class="card-content"><p>المؤشر 6-1-1-2 — تنمي المدرسة المهارات اللغوية والعددية الأساسية لدى الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1VuZf_kJQ6nFhGZeNb5E3DfxM3dglXQfg" target="_blank" class="card"><div class="card-content"><p>المؤشر 7-1-1-2 — تنمي المدرسة مهارات التفكير لدى الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1RpaoC8wEa-B8le4Wi8e4PRfAiDUFbX6J" target="_blank" class="card"><div class="card-content"><p>المؤشر 8-1-1-2 — تنمي المدرسة المهارات العاطفية والاجتماعية لدى الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1VP23Tqk3nh9f-ewfnxuD9A4bkAxtLWhx" target="_blank" class="card"><div class="card-content"><p>المؤشر 9-1-1-2 — تنمي المدرسة المهارات الحركية لدى الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1tJyiB1s4AaQeFZdS_x-KZ6Oiha6_OhBM" target="_blank" class="card"><div class="card-content"><p>المؤشر 10-1-1-2 — تنمي المدرسة المهارات الرقمية لدى الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1-Kr_bU-V0t6cTRH3fsjloV9oMZqOc699" target="_blank" class="card"><div class="card-content"><p>المؤشر 11-1-1-2 — تعزز المدرسة دافعية الأطفال للتعلم والاستمتاع به</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+        </section>
+
+        <!-- رابعاً: تقويم التعليم -->
+        <section class="file-section">
+             <div class="section-header">
+                <h2>تقويم التعليم</h2>
+            </div>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1FtUDvk5l6KGO7FK5QIPGicv8p0BNrhdz" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-1-2-2 — تطبق المدرسة أساليب تقويم متنوعة وفاعلة</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1R42hnWutR86HqitWjgh3uCwRXopuVScF" target="_blank" class="card"><div class="card-content"><p>المؤشر 2-1-2-2 — تحلل المدرسة نتائج التقويم وتوظفها في دعم التعلم</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1vDRKaP0YrjkPB_apPEwyZ1mO4bmwokk-" target="_blank" class="card"><div class="card-content"><p>المؤشر 3-1-2-2 — تقدم المدرسة التغذية الراجعة للأطفال بانتظام</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+        </section>
+
+        <!-- خامساً: مجال البيئة المدرسية -->
+         <section class="file-section">
+            <div class="section-header">
+                <h2>مجال البيئة المدرسية</h2>
+            </div>
+            <h3 class="subsection-header">الأمن والسلامة</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1-lww-ab1LZIfTmEgzrt3gEepssA1tiL6" target="_blank" class="card"><div class="card-content"><p>المؤشر 4-2-1-1 — تتوافر في فصول المدرسة وجميع مرافقها وتجهيزاتها متطلبات الأمن والسلامة</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1wdFW-ukUOtas60ej1pw3kIdY_A91vWzZ" target="_blank" class="card"><div class="card-content"><p>المؤشر 4-2-1-2 — تعمل المدرسة على صيانة جميع مرافق المبنى وتجهيزاته</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1Jg0LHkev3xeFNBHDvhZ67QOxdBzS63R0" target="_blank" class="card"><div class="card-content"><p>المؤشر 4-2-1-3 — تعمل المدرسة على نظافة المبنى المدرسي</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+             <h3 class="subsection-header">المبنى المدرسي</h3>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1QkpfXfSL6O-WzBIJWcn8s6X-9AwJeXgZ" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-1-1-4 — يتلاءم تنظيم مبنى المدرسة مع عدد الأطفال وخصائص المرحلة العمرية</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1coaeXdUAmteX_m2O4CiwBP1NvaVkFcNO" target="_blank" class="card"><div class="card-content"><p>المؤشر 2-1-1-4 — تتوافر في المبنى المدرسي مرافق ملائمة لدعم النمو والتعلم لجميع الأطفال</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/15prh8jLu-zt1VRjN7jeVUtdEpZNaqaz_" target="_blank" class="card"><div class="card-content"><p>المؤشر 3-1-1-4 — تتوافر بالمدرسة تجهيزات ومصادر تعلم متنوعة</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+        </section>
+
+        <!-- سادساً: مجال التحصيل الدراسي -->
+        <section class="file-section">
+             <div class="section-header">
+                <h2>مجال التحصيل الدراسي (التطور الشخصي والصحي والاجتماعي)</h2>
+            </div>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1rDZWFBKL5chlgVXSDQliPbh_fRQBwHya" target="_blank" class="card"><div class="card-content"><p>المؤشر 1-1-2-3 — يظهر الأطفال اعتزازاً بالقيم والهوية الوطنية</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1etnsBhuJPEXyPsWGiCHZKOq39Jg2Arg2" target="_blank" class="card"><div class="card-content"><p>المؤشر 2-1-2-3 — يظهر الأطفال اتجاهات إيجابية نحو ذواتهم</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1NPmUmWLjLyDNKOtLGjV3Vd2viM7plaoC" target="_blank" class="card"><div class="card-content"><p>المؤشر 3-1-2-3 — يظهر الأطفال التزاماً بالممارسات الصحية السليمة</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1GzafSx87LiKb23f6-U6JTa5MJB6Ypd0B" target="_blank" class="card"><div class="card-content"><p>المؤشر 4-1-2-3 — يظهر الأطفال استقلالية ومسؤولية والاعتماد على النفس</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1s1VBmA7KEq-bodmcLZ5zy0ypPAFU7D2p" target="_blank" class="card"><div class="card-content"><p>المؤشر 5-1-2-3 — يلتزم الأطفال بقواعد السلوك والانضباط المدرسي</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1XbZSlg5brZ6kVdH8lCg2lJogN9jsvU1P" target="_blank" class="card"><div class="card-content"><p>المؤشر 6-1-2-3 — يظهر الأطفال القدرة على التعلم الذاتي</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+                <a href="https://drive.google.com/drive/folders/1IlHrbX82JEWRc3PrrZmKhw7zpwJCuY2K" target="_blank" class="card"><div class="card-content"><p>المؤشر 7-1-2-3 — يظهر الأطفال اعتزازاً بثقافتهم واحتراماً للتنوع الثقافي في المجتمع</p></div><div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div></a>
+            </div>
+        </section>
+        
+        <!-- سابعاً: ملفات إضافية -->
+        <section class="file-section">
+            <div class="section-header">
+                <h2>ملفات إضافية</h2>
+            </div>
+            <div class="cards-list">
+                <a href="https://drive.google.com/drive/folders/1pMFKziAyE1MhAeoo9sJkrykr8yzzSXwS" target="_blank" class="card">
+                    <div class="card-content"><p>ملفات إنجاز المعلمات</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1vuNGuTw3AyLn0SQnprg6OvtE_0QuokL4" target="_blank" class="card">
+                    <div class="card-content"><p>ملفات إجاز وسجلات التقويم للأطفال</p></div>
+                    <div class="card-icon-wrapper"><video src="https://cdn-icons-mp4.flaticon.com/512/19004/19004034.mp4" autoplay loop muted></video></div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <script>
+        function filterContent() {
+            let filter = document.getElementById('searchInput').value.toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه');
+            
+            document.querySelectorAll('.file-section').forEach(section => {
+                let cards = section.querySelectorAll('.card');
+                let visibleCardsInSection = 0;
+                
+                cards.forEach(card => {
+                    let textValue = card.querySelector('.card-content p').textContent.toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه');
+                    if (textValue.includes(filter)) {
+                        card.style.display = 'flex';
+                        visibleCardsInSection++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                const sectionHeaders = section.querySelectorAll('.section-header, .subsection-header');
+                if (visibleCardsInSection > 0) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
